@@ -24,7 +24,13 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();// single string of that is first arument, etc: --poni 1 ('poni' is command)
    
     if(songs.indexOf(command) !== -1){
-        client.commands.get('playSong').execute(message, args);
+        let songData = {
+            songName: command,
+            arguments: args 
+            // first argument is volume (0.1 - 4),5 second is disconnectTimer (integer) seperated by spaces
+            // if command is bruh then volume and disconnect timer are overwritten
+        }
+        client.commands.get('playSong').execute(message, songData);
         return;
     };
 
@@ -40,47 +46,9 @@ client.on('message', message => {
 })
 
 
-function checkMessage (msg) {
-    if (msg.content === `${auth.prefix}bruh`) {
-        if (msg.member.voice.channel) {
-            playSong(msg, './songs/bruh.mp3', 3);
-            setTimeout(() => {
-                msg.member.voice.channel.leave();
-            }, 2000);
-        }
-    }
-    if (msg.content === `${auth.prefix}idegas`) {
-        if (msg.member.voice.channel) {
-            playSong(msg, './songs/idegas.mp3');
-        }
-    }
-    if (msg.content === `${auth.prefix}poni`) {
-        if (msg.member.voice.channel) {
-            playSong(msg, './songs/poni.mp3');
-        }
-    }
-    if (msg.content === `${auth.prefix}udjiuvodu`) {
-        if (msg.member.voice.channel) {
-            playSong(msg, './songs/udjiUVodu.mp3');
-        }
-    }
-    if (msg.content === `${auth.prefix}hasl`) {
-        if (msg.member.voice.channel) {
-            playSong(msg, './songs/hasl.mp3');
-        }
-    }
-}
-
-
-async function playSong(msg, songPath, volume) {
-    volume = volume ? volume : 0.4;
-    let conn = await msg.member.voice.channel.join();
-    await conn.play(`${songPath}`, { volume });
-}
-
-// bot.on("typingStart", function(channel, user){
+// client.on("typingStart", function(channel, user){
 //     console.log(user);
 //     channel.send(`${user.tag} has started typing`);
 // });
 
-bot.login(auth.token);
+client.login(token);
