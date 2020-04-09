@@ -1,2 +1,3 @@
 # ignores auth so the token doenst go to github and destroyed
 auth.json
+node_modules/*
