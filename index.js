@@ -7,7 +7,7 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    if(message.content.startsWith('${prefix}poni')){
+    if(message.content.startsWith(`${prefix}poni`)){
         message.channel.send("!p https://www.youtube.com/watch?v=1ejz1V4OIH0")
     }    
 })
