@@ -1,0 +1,19 @@
+{
+  "name": "kick-bot",
+  "version": "1.0.0",
+  "description": "Bot that kicks ppl for various resons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpicVidak/Kick-bot.git"
+  },
+  "author": "Pera x Vidak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EpicVidak/Kick-bot/issues"
+  },
+  "homepage": "https://github.com/EpicVidak/Kick-bot#readme"
+}
