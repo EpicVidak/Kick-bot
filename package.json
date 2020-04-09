@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/EpicVidak/Kick-bot#readme",
   "dependencies": {
-    "discord.js": "^12.1.1"
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^12.1.1",
+    "winston": "^3.2.1"
   }
 }

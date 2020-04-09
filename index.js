@@ -7,6 +7,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 client.on('ready', () => {
     console.log('Ready!');
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
 for (const file of commandFiles) {
