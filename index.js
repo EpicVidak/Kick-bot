@@ -5,9 +5,12 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh'];
+
+
+
 client.on('ready', () => {
     console.log('Ready!');
-  console.log(`Logged in as ${client.user.tag}!`);
 });
 
 for (const file of commandFiles) {
@@ -17,9 +20,13 @@ for (const file of commandFiles) {
 
 client.on('message', message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
-
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+    const args = message.content.slice(prefix.length).split(/ +/); // array of all secndary arguments after first, etc: --poni 1 13 ('poni' is command and '1' and '13' are arguments)
+    const command = args.shift().toLowerCase();// single string of that is first arument, etc: --poni 1 ('poni' is command)
+   
+    if(songs.indexOf(command) !== -1){
+        client.commands.get('playSong').execute(message, args);
+        return;
+    };
 
     if (!client.commands.has(command)) return;
     
