@@ -7,7 +7,6 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 client.on('ready', () => {
     console.log('Ready!');
-  console.log(`Logged in as ${client.user.tag}!`);
 });
 
 for (const file of commandFiles) {
@@ -16,6 +15,11 @@ for (const file of commandFiles) {
 }
 
 client.on('message', message => {
+
+    if(message.content == '69'){                                    //TODO:69 anywhere in the message.
+        message.channel.send('nice.');
+    };
+
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
