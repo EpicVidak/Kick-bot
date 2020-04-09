@@ -31,7 +31,7 @@ async function playSong(msg, options) {
 }
 
 module.exports = {
-    name: 'playSong',
+    name: 'playsong',
     description: 'plays a song that has custom command',
     execute(message, songData){
 
