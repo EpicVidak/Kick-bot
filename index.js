@@ -6,4 +6,5 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 let token = auth.token;
+
 client.login(token);
