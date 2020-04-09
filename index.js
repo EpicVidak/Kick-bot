@@ -1,56 +1,41 @@
-const discord = require('discord.js');
-const auth = require('./auth.json');
+const fs = require('fs');
+const Discord = require('discord.js');
+const {prefix, token} = require('./auth.json');
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-const bot = new discord.Client();
+const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh'];
 
-bot.once('ready', () => {
+
+
+client.on('ready', () => {
     console.log('Ready!');
-})
+});
 
-function payingRespect (guildMember) {
-    const payingRespectNick = 'Paying respect...'
-    let currentNick = guildMember.nickname;
-    if (currentNick === payingRespectNick) 
-        return;
-
-    guildMember.edit({mute: true});
-    guildMember.setNickname(payingRespectNick);
-    setTimeout(() => {
-        guildMember.edit({mute: false})
-        guildMember.setNickname(currentNick);
-    }, 5 * 1000);
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
 }
 
-bot.on('message',(msg) => {
-    console.log(msg.content);
-    if (msg.content === `${auth.prefix}ping`) {
-        // msg.channel.send('pong');
-        console.log(msg);
-    }
-    if (msg.content === 'X') {
-        msg.channel.send(`${msg.author.username} is doubting you `);
-    }
-    if (msg.content === 'F') {
-        // magicnu llinju koda koja muteuje msg.author
-        const guildMember = msg.member;
+client.on('message', message => {
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    const args = message.content.slice(prefix.length).split(/ +/); // array of all secndary arguments after first, etc: --poni 1 13 ('poni' is command and '1' and '13' are arguments)
+    const command = args.shift().toLowerCase();// single string of that is first arument, etc: --poni 1 ('poni' is command)
+   
+    if(songs.indexOf(command) !== -1){
+        client.commands.get('playSong').execute(message, args);
+        return;
+    };
 
-        payingRespect(guildMember);
-        guildMember.send('hello!');
-        // let voiceStates = new discord.VoiceState(msg.guild)
-        // voiceStates.setMute(true);
+    if (!client.commands.has(command)) return;
+    
+    try {
+        client.commands.get(command).execute(message, args);
+    } catch (error) {
+        console.error(error);
+        message.reply('there was an error trying to execute that command!');
     }
-    if (msg.content.includes(`${auth.prefix}kick`)) {
-        // console.log(msg);
-        let mention = msg.mentions.users.first();
-        console.log(mention);
-        
-        if (mention) {
-            msg.channel.send(`Why do you want me to kick "${mention.toString()}", are you that salty?`);
-        } else {
-            msg.channel.send(`If you don't specify who to kick, i swear ill kick you ${msg.member.nickname}`);
-        }
-    }
-    checkMessage(msg);
     
 })
 
