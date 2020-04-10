@@ -47,8 +47,6 @@ async function playSong(msg, options) {
     }
     if(songPath === 'onomoje') {
         msg.reply(' ono tvoje?');
-        setTimeout(() => {
-        }, 1500);
     }
     let conn = await msg.member.voice.channel.join();
     await conn.play(`${songs[songPath]}`, { volume });

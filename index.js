@@ -39,7 +39,11 @@ client.on('message', message => {
         const user = message.mentions.users.first();
         const member = message.guild.member(user);
         const connection = member.voice.channel.join();
-        connection.play('/music/itis.mp3');
+        console.log(user);
+        console.log(message.mentions.users.first);
+        console.log(member);
+        // console.log(connection);
+        // connection.play('/music/itis.mp3');
     }
 
 
