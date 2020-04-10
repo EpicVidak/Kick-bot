@@ -33,7 +33,7 @@ async function playSong(msg, options) {
         volume = 2;
     }
     if(songPath === 'idegas') {
-        //const idegasText = ':regional_indicator_i: :regional_indicator_d: :regional_indicator_e: :regional_indicator_g: :regional_indicator_a: :regional_indicator_s:';
+        const idegasText = ':regional_indicator_i: :regional_indicator_d: :regional_indicator_e: :regional_indicator_g: :regional_indicator_a: :regional_indicator_s:';
         msg.reply(' u sure bud?');
         setTimeout(() => {
             message.channel.send(idegasText);
