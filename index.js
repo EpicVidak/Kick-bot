@@ -9,7 +9,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports', 'itis'];
+const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports', 'itis', 'yee'];
 const rawCommands = ['X', 'F', '69', '420', '1337'];
 function checkForRawMessage(message) {
     if (rawCommands.indexOf(message.content) !== -1) {

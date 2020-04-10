@@ -7,7 +7,8 @@ const songs = {
     'bruh': './music/bruh.mp3',
     'omegalul': './music/omegalul.mp3',
     'esports': './music/esports.mp3',
-    'itis': './music/itis.mp3'
+    'itis': './music/itis.mp3',
+    'yee': './music/yee.mp3'
 }
 
 async function playSong(msg, options) {
@@ -26,7 +27,6 @@ async function playSong(msg, options) {
     }
     if(songPath === 'itis'){
         options.disconnectTimer = 3.5;
-        volume = 1;
     }
     if(songPath === 'omegalul'){
         options.disconnectTimer = 1.5;

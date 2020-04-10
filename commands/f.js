@@ -7,10 +7,10 @@ function payingRespect (guildMember) {
     try {
         setTimeout(() => {
             guildMember.edit({mute: false})
-            guildMember.setNickname(currentNick);
+            // guildMember.setNickname(currentNick);
         }, 5 * 1000);
         guildMember.edit({mute: true});
-        guildMember.setNickname(payingRespectNick);
+        // guildMember.setNickname(payingRespectNick);
     } catch (error) {
         console.log(error.message);
     }
@@ -18,12 +18,15 @@ function payingRespect (guildMember) {
 }
 
 module.exports = {
-    name: 'f',
+    name: 'F',
     description: 'F!',
     execute(msg, args){
         const guildMember = msg.member;
 
         payingRespect(guildMember);
-        // guildMember.send('hello!');
+        msg.reply(' is paying respect...');
+        msg.delete();
+        
+        // .guildMembersend('hello!');
     },
 }
