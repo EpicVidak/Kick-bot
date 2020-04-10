@@ -4,7 +4,9 @@ const songs = {
     'onomoje': './music/onomoje.mp3',
     'udjiuvodu': './music/udjiuvodu.mp3',
     'idegas': './music/idegas.mp3',
-    'bruh': './music/bruh.mp3'
+    'bruh': './music/bruh.mp3',
+    'omegalul': './music/omegalul.mp3',
+    'esports': './music/esports.mp3'
 }
 
 async function playSong(msg, options) {
@@ -17,8 +19,12 @@ async function playSong(msg, options) {
     */
     let volume = options.volume ? options.volume : 0.5;
     let songPath = options.songName;
-    if (songPath === 'bruh') {
+    if (songPath === 'bruh' || songPath === 'esports') {
         options.disconnectTimer = 2;
+        volume = 2;
+    }
+    if(songPath === 'omegalul'){
+        options.disconnectTimer = 1.5;
         volume = 2;
     }
     if(songPath === 'idegas') {
