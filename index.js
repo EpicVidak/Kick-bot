@@ -33,7 +33,12 @@ for (const file of commandFiles) {
 }
 
 client.on('message', message => {
-    checkForRawMessage(message);
+
+    if(message.content == '69'){                                    //TODO:69 anywhere in the message.
+        message.channel.send('nice.');
+    };
+
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.slice(prefix.length).split(/ +/); // array of all secndary arguments after first, etc: --poni 1 13 ('poni' is command and '1' and '13' are arguments)
@@ -60,10 +65,10 @@ client.on('message', message => {
     
 })
 
-
-// client.on("typingStart", function(channel, user){
-//     console.log(user);
-//     channel.send(`${user.tag} has started typing`);
-// });
-
 client.login(token);
+
+
+//TODO: djokala( random @tvoja keva)
+//TODO: it is what is is
+//TODO: omigalul
+//TODO: can enter voice ur not in
