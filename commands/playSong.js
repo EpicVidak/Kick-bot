@@ -31,7 +31,7 @@ async function playSong(msg, options) {
         const idegasText = ':regional_indicator_i: :regional_indicator_d: :regional_indicator_e: :regional_indicator_g: :regional_indicator_a: :regional_indicator_s:';
         msg.reply(' u sure bud?');
         setTimeout(() => {
-            message.channel.send(idegasText);
+            msg.channel.send(idegasText);
         }, 1500);
     }
     if (msg.member && msg.member.voice && msg.member.voice.channel){
