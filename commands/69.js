@@ -3,6 +3,5 @@ module.exports = {
     description: 'nice addon',
     execute(message, args){
         message.reply('nice.');
-        message.delete();
     },
 }

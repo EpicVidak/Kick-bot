@@ -3,5 +3,6 @@ module.exports = {
     description: 'hacker time',
     execute(message, args){
         message.channel.send('Woah, we got a hackerman here');
+        message.delete();
     },
 }

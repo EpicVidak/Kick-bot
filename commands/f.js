@@ -18,7 +18,7 @@ function payingRespect (guildMember) {
 }
 
 module.exports = {
-    name: 'f',
+    name: 'F',
     description: 'F!',
     execute(msg, args){
         const guildMember = msg.member;
