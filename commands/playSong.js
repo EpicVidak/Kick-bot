@@ -6,7 +6,8 @@ const songs = {
     'idegas': './music/idegas.mp3',
     'bruh': './music/bruh.mp3',
     'omegalul': './music/omegalul.mp3',
-    'esports': './music/esports.mp3'
+    'esports': './music/esports.mp3',
+    'itis': './music/itis.mp3'
 }
 
 async function playSong(msg, options) {
@@ -23,16 +24,30 @@ async function playSong(msg, options) {
         options.disconnectTimer = 2.1;
         volume = 2;
     }
+    if(songPath === 'itis'){
+        options.disconnectTimer = 3.5;
+        volume = 1;
+    }
     if(songPath === 'omegalul'){
         options.disconnectTimer = 1.5;
         volume = 2;
     }
     if(songPath === 'idegas') {
-        const idegasText = ':regional_indicator_i: :regional_indicator_d: :regional_indicator_e: :regional_indicator_g: :regional_indicator_a: :regional_indicator_s:';
+        //const idegasText = ':regional_indicator_i: :regional_indicator_d: :regional_indicator_e: :regional_indicator_g: :regional_indicator_a: :regional_indicator_s:';
         msg.reply(' u sure bud?');
         setTimeout(() => {
             message.channel.send(idegasText);
         }, 1500);
+        msg.react('🇮')
+            .then(() => msg.react('🇩'))
+            .then(() => msg.react('🇪'))
+            .then(() => msg.react('🇬'))
+            .then(() => msg.react('🇦'))
+            .then(() => msg.react('🇸'))
+            .catch(() => console.error('some emoji failed to load'));
+    }
+    if(songPath === 'onomoje') {
+        msg.reply(' ono tvoje?');
     }
     if (msg.member && msg.member.voice && msg.member.voice.channel){
         let conn = await msg.member.voice.channel.join();
@@ -64,3 +79,7 @@ module.exports = {
         playSong(message, options)
     },
 }
+//Placeholder (pls dont delete)
+/*
+    🇦 🇧 🇨 🇩 🇪 🇫 🇬 🇭 🇮 🇯 🇰 🇱 🇲 🇳 🇴 🇵 🇶 🇷 🇸 🇹 🇺 🇻 🇼 🇽 🇾 🇿
+*/ 
