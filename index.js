@@ -37,3 +37,9 @@ client.on('message', message => {
 })
 
 client.login(token);
+
+
+//TODO: djokala( random @tvoja keva)
+//TODO: it is what is is
+//TODO: omigalul
+//TODO: can enter voice ur not in
