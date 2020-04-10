@@ -10,10 +10,11 @@ const rawCommands = ['X', 'F', '69'];
 function checkForRawMessage(message) {
     if (rawCommands.indexOf(message.content) !== -1) {
         try {
-            let command = message.content.toLowerCase();
+            // vvv Useless?? vvv
+            /* let command = message.content.toLowerCase();
             if(message.content == 69){
                 command = 'sixnine';
-            }
+            } */
             client.commands.get(command).execute(message);
         } catch (error) {
             console.error(error);
