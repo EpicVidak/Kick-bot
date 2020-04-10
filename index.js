@@ -4,21 +4,29 @@ const {prefix, token} = require('./auth.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+}
 
 const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports'];
-const rawCommands = ['X', 'F', '69'];
+const rawCommands = ['X', 'F', '69', '1337', '420'];
 function checkForRawMessage(message) {
     if (rawCommands.indexOf(message.content) !== -1) {
         try {
-            // vvv Useless?? vvv
-            /* let command = message.content.toLowerCase();
-            if(message.content == 69){
+            // vvv Ovo je bio socijalni bugfix za jedan specifican bugg koji moj mrtav umoran mozak nije mogao debug vvv
+            /*if(message.content == 69){
                 command = 'sixnine';
             } */
+            let command = message.content.toString(); // ako posaljes samo 69,420,1337 on mora da nadje file sa imenom tog broja (string)
+            console.log(command);
+            
             client.commands.get(command).execute(message);
         } catch (error) {
-            console.error(error);
-            message.reply('there was an error trying to execute that command!');
+            console.log(error);
+            console.log('error from CheckForrRaMessage');
+            
+            message.reply('There was an error trying to execute that command!');
         }
     }
 
@@ -28,10 +36,6 @@ client.on('ready', () => {
     console.log('Ready!');
 });
 
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
-}
 
 client.on('message', message => {
 
@@ -44,8 +48,8 @@ client.on('message', message => {
         let songData = {
             songName: command,
             arguments: args 
-            // first argument is volume (0.1 - 4),5 second is disconnectTimer (integer) seperated by spaces
-            // if command is bruh then volume and disconnect timer are overwritten
+            // first argument is volume (0.1 - 3), second one is disconnectTimer (integer) seperated by spaces
+            // if command is bruh or omegalul then volume and disconnect timer are overwritten
         }
         client.commands.get('playsong').execute(message, songData);
         return;
@@ -57,6 +61,7 @@ client.on('message', message => {
         client.commands.get(command).execute(message, args);
     } catch (error) {
         console.error(error);
+        console.log('error from client.on(message =>{})');
         message.reply('there was an error trying to execute that command!');
     }
     

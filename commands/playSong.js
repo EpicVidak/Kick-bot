@@ -20,7 +20,7 @@ async function playSong(msg, options) {
     let volume = options.volume ? options.volume : 0.5;
     let songPath = options.songName;
     if (songPath === 'bruh' || songPath === 'esports') {
-        options.disconnectTimer = 2;
+        options.disconnectTimer = 2.1;
         volume = 2;
     }
     if(songPath === 'omegalul'){
@@ -31,14 +31,17 @@ async function playSong(msg, options) {
         const idegasText = ':regional_indicator_i: :regional_indicator_d: :regional_indicator_e: :regional_indicator_g: :regional_indicator_a: :regional_indicator_s:';
         msg.reply(' u sure bud?');
         setTimeout(() => {
+            message.channel.send(idegasText);
         }, 1500);
     }
-    let conn = await msg.member.voice.channel.join();
-    await conn.play(`${songs[songPath]}`, { volume });
-    if (options.disconnectTimer) {
-        setTimeout(() => {
-            msg.member.voice.channel.leave();
-        }, options.disconnectTimer * 1000);
+    if (msg.member && msg.member.voice && msg.member.voice.channel){
+        let conn = await msg.member.voice.channel.join();
+        await conn.play(`${songs[songPath]}`, { volume });
+        if (options.disconnectTimer) {
+            setTimeout(() => {
+                msg.member.voice.channel.leave();
+            }, options.disconnectTimer * 1000);
+        }
     }
 }
 
