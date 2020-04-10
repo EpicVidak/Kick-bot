@@ -78,7 +78,7 @@ module.exports = {
         playSong(message, options)
     },
 }
-//Placeholder
+//Placeholder (pls dont delete)
 /*
     🇦 🇧 🇨 🇩 🇪 🇫 🇬 🇭 🇮 🇯 🇰 🇱 🇲 🇳 🇴 🇵 🇶 🇷 🇸 🇹 🇺 🇻 🇼 🇽 🇾 🇿
 */ 

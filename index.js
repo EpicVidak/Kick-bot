@@ -35,11 +35,23 @@ for (const file of commandFiles) {
 
 client.on('message', message => {
 
+    if(message.content.startsWith('rape')){
+        const user = message.mentions.users.first();
+        const member = message.guild.member(user);
+        const connection = member.voice.channel.join();
+        connection.play('/music/itis.mp3');
+    }
+
+
     checkForRawMessage(message);
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.slice(prefix.length).split(/ +/); // array of all secndary arguments after first, etc: --poni 1 13 ('poni' is command and '1' and '13' are arguments)
     const command = args.shift().toLowerCase();// single string of that is first arument, etc: --poni 1 ('poni' is command)
+
+    console.log(command);
+    console.log(args);
+
     if(songs.indexOf(command) !== -1){
         let songData = {
             songName: command,
