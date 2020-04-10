@@ -5,8 +5,8 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports'];
-const rawCommands = ['X', 'F', '69'];
+const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports', 'itis'];
+const rawCommands = ['X', 'F', '69', '420', '1337'];
 function checkForRawMessage(message) {
     if (rawCommands.indexOf(message.content) !== -1) {
         try {
