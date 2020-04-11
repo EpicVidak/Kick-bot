@@ -46,6 +46,10 @@ async function playSong(msg, options) {
             .then(() => msg.react('🇸'))
             .catch(() => console.error('some emoji failed to load'));
     }
+    if(songPath === 'poni'){
+        msg.delete();
+        msg.channel.send('🐴')
+    }
     if(songPath === 'onomoje') {
         msg.reply(' ono tvoje?');
     }
@@ -82,4 +86,6 @@ module.exports = {
 //Placeholder (pls dont delete)
 /*
     🇦 🇧 🇨 🇩 🇪 🇫 🇬 🇭 🇮 🇯 🇰 🇱 🇲 🇳 🇴 🇵 🇶 🇷 🇸 🇹 🇺 🇻 🇼 🇽 🇾 🇿
+
+    🐴 ⌚ 👩‍🎤
 */ 
