@@ -9,7 +9,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports', 'itis'];
+const songs = ['poni','hasl','onomoje','udjiuvodu','idegas','bruh', 'omegalul', 'esports', 'itis', 'shutup', 'hello'];
 const rawCommands = ['X', 'F', '69', '420', '1337'];
 function checkForRawMessage(message) {
     if (rawCommands.indexOf(message.content) !== -1) {
@@ -92,11 +92,10 @@ client.login(token);
 
 
 //TODO: djokala( random @tvoja keva)
-//TODO: it is what is is
-//TODO: omigalul
 //TODO: can enter voice ur not in
-//TODO: gl in esports
 //TODO: oof?
+//TODO: hoes mad
+//TODO: hello my friends
 
 //  S)ssss  T)tttttt  O)oooo  P)ppppp                                      
 // S)    ss    T)    O)    oo P)    pp                                     
